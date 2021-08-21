@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+import './sass/styles.scss';
+import Navbar from './Components/Navbar';
 
 function App() {
+  const [teamData, setTeamData] = useState([]);
+
+  const NHL_API_Call = async () => {
+    const response = await fetch(`https://statsapi.web.nhl.com/api/v1/teams`);
+    const data = await response.json();
+    console.log(data);
+    setTeamData(data);
+  };
+
+  useEffect(() => {
+    NHL_API_Call();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      <h1>This is the home page</h1>
     </div>
   );
 }
