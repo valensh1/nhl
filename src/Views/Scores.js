@@ -2,7 +2,7 @@ import React from 'react';
 
 function Scores() {
   return (
-    <div>
+    <div className='scores'>
       <h1>This is the Scores page</h1>
     </div>
   );

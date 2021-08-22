@@ -1,9 +1,59 @@
-img {
-  width: 15rem;
-  height: 10rem;
-  margin: 1rem;
+//? -------------------------------- DEFAULT GLOBAL SETTINGS -------------------------------------
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 
-img:hover {
-  transform: scale(1.2);
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* Everything is based upon 10px with this. 10px / 16px = .625. With this 1rem will = 10px. */
+}
+
+/* Place inherit properties at root of CSS. This will force all elements to inherit properties from their parent. Now you go an specifiy a border-box property somewhere and any of its children will inherit that property. */
+*,
+*::after,
+*::before {
+  box-sizing: inherit; /* This forces all elements on page to inherit properties from their parent when it comes to box-sizing. */
+}
+
+body {
+  /* Place box-sizing property here now and all children of body will inherit the border-box property because of the inherit property specified at the root in code above */
+  box-sizing: border-box; /* Eliminates margins and padding in width and height of box. When you specify an elements width or height that measurement will include the margin and padding. The border box property adjusts the box accordingly to make the box the total measurements specified. Other properties if set width to 100% for example the border and padding would cause element to protrude further out from it box or container. */
+}
+
+//? ----------------------------------- NAVIGATION BAR (NAVBAR) ------------------------------------------
+.global-container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+
+  .navbar {
+    grid-row: 1 / 1;
+    grid-column: 2 / 6;
+
+    .navbar--ul {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      list-style: none;
+      background-color: black;
+      justify-items: center;
+
+      .navbar--ul-link {
+        color: white;
+        text-decoration: none;
+        font-size: 2.2rem;
+        margin: 0;
+      }
+    }
+  }
+
+  .scores {
+    grid-row: 3 / 3;
+    grid-column: 5 / 6;
+  }
 }
