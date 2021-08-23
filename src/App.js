@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; //! M
 
 import './sass/styles.scss';
 import Navbar from './Components/Navbar';
+import Home from './Views/Home';
 import Scores from './Views/Scores';
 import News from './Views/News';
 import Video from './Views/Video';
@@ -29,6 +30,10 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+
           <Route exact path='/scores'>
             <Scores />
           </Route>

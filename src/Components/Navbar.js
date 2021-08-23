@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 function Navbar() {
   return (
     <div className='navbar'>
-      <img id='nhl-logo' src='./images/NHLLogo.png' alt='NHL Logo' />
+      <Link id='nhl-logo' to='/'>
+        <img src='./images/NHLLogo.png' alt='NHL Logo' />
+      </Link>
       <div className='ul-container'>
         <ul className='navbar--ul'>
           <li>
