@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; //! MUST IMPORT BrowswerRouter (changing name to just Router by as Router is optional) and Route and Switch
 
-import './sass/styles.scss';
+import './sass/main.scss';
 import Navbar from './Components/Navbar';
 import Home from './Views/Home';
 import Scores from './Views/Scores';
