@@ -1,26 +1,10 @@
 import { Link } from 'react-router-dom';
+import StatsCategories from '../Components/StatsCategories';
 
 function Stats() {
   return (
     <div className='stats'>
-      <h1>Statistics</h1>
-      <div>
-        <ul>
-          <li>
-            <Link to='/stats/home'>Home</Link>
-          </li>
-          <li>
-            <Link to='/stats/home'>Skaters</Link>
-          </li>
-          <li>
-            <Link to='/stats/home'>Goalies</Link>
-          </li>
-          <li>
-            <Link to='/stats/home'>Teams</Link>
-          </li>
-        </ul>
-      </div>
-
+      <StatsCategories />
       <h3>Summary</h3>
       <table>
         <tr>

@@ -8,6 +8,9 @@ import Scores from './Views/Scores';
 import News from './Views/News';
 import Video from './Views/Video';
 import Stats from './Views/Stats';
+import StatsGoalies from './Views/Stats_Goalies';
+import StatsSkaters from './Views/Stats_Skaters';
+import StatsTeams from './Views/Stats_Teams';
 import Fantasy from './Views/Fantasy';
 import Shop from './Views/Shop';
 
@@ -56,6 +59,18 @@ function App() {
 
           <Route exact path='/shop'>
             <Shop />
+          </Route>
+
+          <Route exact path='/stats/goalies'>
+            <StatsGoalies />
+          </Route>
+
+          <Route exact path='/stats/skaters'>
+            <StatsSkaters />
+          </Route>
+
+          <Route exact path='/stats/teams'>
+            <StatsTeams />
           </Route>
         </Switch>
       </Router>

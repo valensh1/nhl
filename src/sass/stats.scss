@@ -1,5 +1,38 @@
 .stats {
-  h1 {
-    color: red;
+  font-size: large;
+  position: absolute;
+  top: 10%;
+  left: 25%;
+  width: 50%;
+
+  &--header {
+    font-weight: 700;
+  }
+
+  &--category-container {
+    margin-top: 3rem;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+  }
+  &--category-links {
+    width: 40%;
+  }
+
+  &--ul {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    line-height: 3rem;
+  }
+
+  &--category-item {
+    display: inline-block;
+
+    a,
+    :link:visited {
+      text-decoration: none; // Remove underline from links
+      color: black;
+    }
   }
 }
