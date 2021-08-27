@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 function Stats_Goalies() {
   const [goalieStats, setGoalieStats] = useState([]);
+  const goalieStats2 = [];
+  const finalArrayToLoop = [];
 
   const statsAPICall = async count => {
     try {
@@ -15,6 +17,12 @@ function Stats_Goalies() {
       }
 
       await setGoalieStats(promises);
+      await goalieStats2.push(promises);
+      await goalieStats2.map(el => {
+        finalArrayToLoop.push(el?.roster?.[0].person.fullName);
+      });
+      console.log(goalieStats2);
+      console.log(finalArrayToLoop);
     } catch (error) {
       console.error(error);
     }
