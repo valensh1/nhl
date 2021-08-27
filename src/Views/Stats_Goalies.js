@@ -1,117 +1,42 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function Stats_Goalies() {
-  const dataFetch = async () => {
-    Promise.all([
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/1/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/2/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/3/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/4/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/5/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/6/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/7/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/8/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/9/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/10/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/11/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/12/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/13/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/14/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/15/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/16/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/17/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/18/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/19/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/20/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/21/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/22/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/23/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/24/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/25/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/26/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/27/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/28/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/29/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/30/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/31/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/32/roster`).then(data =>
-        data.json()
-      ),
-      fetch(`https://statsapi.web.nhl.com/api/v1/teams/33/roster`).then(data =>
-        data.json()
-      ),
-    ]).then(console.log);
+  const [goalieStats, setGoalieStats] = useState([]);
+
+  const statsAPICall = async count => {
+    try {
+      const promises = [];
+      for (let i = 1; i <= count; ++i) {
+        promises.push(
+          await fetch(
+            `https://statsapi.web.nhl.com/api/v1/teams/${i}/roster`
+          ).then(data => data.json())
+        );
+      }
+
+      await setGoalieStats(promises);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
-    dataFetch();
+    console.log(`Goalie useEffect ran`);
+    statsAPICall(20);
   }, []);
 
   return (
     <div>
       <h1>Stats - Goalies</h1>
+      <h2>Dude - Goalies</h2>
+      <h1>{goalieStats[0]?.roster[0].person.fullName}</h1>
+      {goalieStats.map(goalie => {
+        return (
+          <h3 key={goalie.roster?.[0].person.id}>
+            {goalie.roster?.[0].person.fullName}
+          </h3>
+        );
+      })}
     </div>
   );
 }
