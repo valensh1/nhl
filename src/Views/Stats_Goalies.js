@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 
 function Stats_Goalies() {
   const [goalieStats, setGoalieStats] = useState([]);
-  const goalieStats2 = [];
-  const finalArrayToLoop = [];
+  const [finalGoalieStats, setFinalGoalieStats] = useState([]);
 
   const statsAPICall = async count => {
     try {
@@ -17,12 +16,7 @@ function Stats_Goalies() {
       }
 
       await setGoalieStats(promises);
-      await goalieStats2.push(promises);
-      await goalieStats2.map(el => {
-        finalArrayToLoop.push(el?.roster?.[0].person.fullName);
-      });
-      console.log(goalieStats2);
-      console.log(finalArrayToLoop);
+      console.log(goalieStats);
     } catch (error) {
       console.error(error);
     }
@@ -38,12 +32,20 @@ function Stats_Goalies() {
       <h1>Stats - Goalies</h1>
       <h2>Dude - Goalies</h2>
       <h1>{goalieStats[0]?.roster[0].person.fullName}</h1>
-      {goalieStats.map(goalie => {
+      {/* {goalieStats.map(goalie => {
         return (
-          <h3 key={goalie.roster?.[0].person.id}>
-            {goalie.roster?.[0].person.fullName}
-          </h3>
+          <div>
+            <h3 key={goalie.roster?.[0].person.id}>
+              {goalie.roster?.[0].person.fullName}
+            </h3>
+          </div>
         );
+      })} */}
+
+      {goalieStats.map(goalie => {
+        return goalie.roster?.map(el => {
+          return <h4>{el.person.fullName}</h4>;
+        });
       })}
     </div>
   );
