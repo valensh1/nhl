@@ -24,7 +24,7 @@ function Stats_Goalies() {
 
   useEffect(() => {
     console.log(`Goalie useEffect ran`);
-    statsAPICall(20);
+    statsAPICall(32);
   }, []);
 
   return (
@@ -44,7 +44,7 @@ function Stats_Goalies() {
 
       {goalieStats.map(goalie => {
         return goalie.roster?.map(el => {
-          return <h4>{el.person.fullName}</h4>;
+          return <h4>{el.position.code === 'G' ? el.person.fullName : ''}</h4>;
         });
       })}
     </div>
