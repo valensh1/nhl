@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import GoalieStatCategories from '../Components/GoalieStatCategories.js';
 
 function Stats_Goalies() {
   const [goalieStats, setGoalieStats] = useState([]);
@@ -29,22 +30,12 @@ function Stats_Goalies() {
 
   return (
     <div>
-      <h1>Stats - Goalies</h1>
-      <h2>Dude - Goalies</h2>
-      <h1>{goalieStats[0]?.roster[0].person.fullName}</h1>
-      {/* {goalieStats.map(goalie => {
-        return (
-          <div>
-            <h3 key={goalie.roster?.[0].person.id}>
-              {goalie.roster?.[0].person.fullName}
-            </h3>
-          </div>
-        );
-      })} */}
+      <GoalieStatCategories />
+      {/* <h1>{goalieStats[0]?.roster[0].person.fullName}</h1> */}
 
       {goalieStats.map(goalie => {
         return goalie.roster?.map(el => {
-          return <h4>{el.position.code === 'G' ? el.person.fullName : ''}</h4>;
+          return <h2>{el.position.code === 'G' ? el.person.fullName : ''}</h2>;
         });
       })}
     </div>

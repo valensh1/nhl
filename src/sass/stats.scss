@@ -36,3 +36,29 @@
     }
   }
 }
+
+//? GOALIE STATS CATEGORIES HEADERS
+.goalie--stats {
+  width: 80vw;
+  margin-left: 15%;
+  margin-top: 1.5%;
+
+  &-h1 {
+    width: 80vw;
+    text-align: center;
+    font-size: 3rem;
+    text-transform: uppercase;
+  }
+
+  &-categories {
+    height: 3rem;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-header {
+    font-size: 2rem;
+  }
+}
