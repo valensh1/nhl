@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import GoalieStatCategories from '../Components/GoalieStatCategories.js';
 
 function Stats_Goalies() {
+  const latestSeason = '2021-2022';
   const [goalieStats, setGoalieStats] = useState([]);
+  const [goalieFilteredStats, setGoalieFilteredStats] = useState([]);
 
   const statsAPICall = async count => {
     try {
@@ -16,7 +18,13 @@ function Stats_Goalies() {
         );
       }
 
-      await setGoalieStats(promises);
+      await setGoalieStats(promises.map(stat => stat.roster));
+      setGoalieFilteredStats(
+        goalieStats.map(el => {
+          return el.position.code === 'G';
+        })
+      );
+
       console.log(goalieStats);
     } catch (error) {
       console.error(error);
@@ -28,6 +36,27 @@ function Stats_Goalies() {
     statsAPICall(32);
   }, []);
 
+  useEffect(() => {
+    const goalieOnlyStats = [];
+    goalieStats.map(el => {
+      return el?.map(stat => {
+        const unfilteredArr = stat?.position?.code === 'G' ? stat : '';
+        if (unfilteredArr?.position?.code === 'G') {
+          goalieOnlyStats.push(unfilteredArr);
+        }
+      });
+    });
+    console.log(goalieOnlyStats);
+    setGoalieFilteredStats(goalieOnlyStats);
+    // setGoalieFilteredStats(
+    //   goalieStats.map(el => {
+    //     return el?.map(stat => {
+    //       return stat?.position?.code === 'G' ? stat : '';
+    //     });
+    //   })
+    // );
+  }, [goalieStats]);
+
   return (
     <div className='goalie--stats'>
       <h1 className='goalie--stats-h1'>Stats - Goalies</h1>
@@ -37,7 +66,7 @@ function Stats_Goalies() {
         {/* <h1>{goalieStats[0]?.roster[0].person.fullName}</h1> */}
 
         {goalieStats.map(goalie => {
-          return goalie.roster?.map(el => {
+          return goalie?.map(el => {
             return (
               <tr>
                 <Link>
@@ -45,7 +74,7 @@ function Stats_Goalies() {
                     {el.position.code === 'G' ? el.person.fullName : ''}
                   </td>
                 </Link>
-                <td>Data2</td>
+                <td>{el.position.code === 'G' ? latestSeason : ''}</td>
               </tr>
             );
           });
