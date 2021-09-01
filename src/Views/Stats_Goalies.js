@@ -48,13 +48,6 @@ function Stats_Goalies() {
     });
     console.log(goalieOnlyStats);
     setGoalieFilteredStats(goalieOnlyStats);
-    // setGoalieFilteredStats(
-    //   goalieStats.map(el => {
-    //     return el?.map(stat => {
-    //       return stat?.position?.code === 'G' ? stat : '';
-    //     });
-    //   })
-    // );
   }, [goalieStats]);
 
   return (
@@ -65,19 +58,17 @@ function Stats_Goalies() {
         <GoalieStatCategories />
         {/* <h1>{goalieStats[0]?.roster[0].person.fullName}</h1> */}
 
-        {goalieStats.map(goalie => {
-          return goalie?.map(el => {
-            return (
-              <tr>
-                <Link>
-                  <td className='goalie--stats-player'>
-                    {el.position.code === 'G' ? el.person.fullName : ''}
-                  </td>
-                </Link>
-                <td>{el.position.code === 'G' ? latestSeason : ''}</td>
-              </tr>
-            );
-          });
+        {goalieFilteredStats.map(goalie => {
+          return (
+            <tr>
+              <Link className='goalie--stats-link'>
+                <td className='goalie--stats-player'>
+                  {goalie.person.fullName}
+                </td>
+              </Link>
+              <td>{latestSeason}</td>
+            </tr>
+          );
         })}
       </table>
     </div>

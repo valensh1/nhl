@@ -70,4 +70,10 @@
   &-player {
     font-size: 1.5rem;
   }
+
+  a,
+  :link:visited {
+    text-decoration: none; // Remove underline from links
+    color: black;
+  }
 }
