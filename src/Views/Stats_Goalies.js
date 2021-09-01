@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import GoalieStatCategories from '../Components/GoalieStatCategories.js';
 
 function Stats_Goalies() {
   const [goalieStats, setGoalieStats] = useState([]);
-  const [finalGoalieStats, setFinalGoalieStats] = useState([]);
 
   const statsAPICall = async count => {
     try {
@@ -29,15 +29,28 @@ function Stats_Goalies() {
   }, []);
 
   return (
-    <div>
-      <GoalieStatCategories />
-      {/* <h1>{goalieStats[0]?.roster[0].person.fullName}</h1> */}
+    <div className='goalie--stats'>
+      <h1 className='goalie--stats-h1'>Stats - Goalies</h1>
 
-      {goalieStats.map(goalie => {
-        return goalie.roster?.map(el => {
-          return <h2>{el.position.code === 'G' ? el.person.fullName : ''}</h2>;
-        });
-      })}
+      <table className='goalie--stats-table'>
+        <GoalieStatCategories />
+        {/* <h1>{goalieStats[0]?.roster[0].person.fullName}</h1> */}
+
+        {goalieStats.map(goalie => {
+          return goalie.roster?.map(el => {
+            return (
+              <tr>
+                <Link>
+                  <td className='goalie--stats-player'>
+                    {el.position.code === 'G' ? el.person.fullName : ''}
+                  </td>
+                </Link>
+                <td>Data2</td>
+              </tr>
+            );
+          });
+        })}
+      </table>
     </div>
   );
 }

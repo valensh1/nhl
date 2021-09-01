@@ -1,23 +1,20 @@
 function GoalieStatCategories() {
   return (
-    <div className='goalie--stats'>
-      <h1 className='goalie--stats-h1'>Stats - Goalies</h1>
-      <div className='goalie--stats-categories'>
-        <h3 className='goalie--stats-header'>Player</h3>
-        <h3 className='goalie--stats-header'>Season</h3>
-        <h3 className='goalie--stats-header'>Team</h3>
-        <h3 className='goalie--stats-header'>GP</h3>
-        <h3 className='goalie--stats-header'>W</h3>
-        <h3 className='goalie--stats-header'>L</h3>
-        <h3 className='goalie--stats-header'>OT</h3>
-        <h3 className='goalie--stats-header'>SA</h3>
-        <h3 className='goalie--stats-header'>Svs</h3>
-        <h3 className='goalie--stats-header'>GA</h3>
-        <h3 className='goalie--stats-header'>SV%</h3>
-        <h3 className='goalie--stats-header'>GAA</h3>
-        <h3 className='goalie--stats-header'>SO</h3>
-      </div>
-    </div>
+    <tr className='goalie--stats-categories'>
+      <th className='goalie--stats-header'>Player</th>
+      <th className='goalie--stats-header'>Season</th>
+      <th className='goalie--stats-header'>Team</th>
+      <th className='goalie--stats-header'>GP</th>
+      <th className='goalie--stats-header'>W</th>
+      <th className='goalie--stats-header'>L</th>
+      <th className='goalie--stats-header'>OT</th>
+      <th className='goalie--stats-header'>SA</th>
+      <th className='goalie--stats-header'>Svs</th>
+      <th className='goalie--stats-header'>GA</th>
+      <th className='goalie--stats-header'>SV%</th>
+      <th className='goalie--stats-header'>GAA</th>
+      <th className='goalie--stats-header'>SO</th>
+    </tr>
   );
 }
 

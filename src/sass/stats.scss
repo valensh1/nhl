@@ -54,11 +54,20 @@
     height: 3rem;
     background-color: black;
     color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
   }
   &-header {
     font-size: 2rem;
+  }
+
+  &-table {
+    width: 100%;
+  }
+
+  &-player {
+    font-size: 1.5rem;
   }
 }
